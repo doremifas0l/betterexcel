@@ -5,9 +5,10 @@ import { Column } from '@/lib/supabase';
 
 interface UseColumnManagerProps {
   onColumnCreated: () => void;
+  onColumnDeleted: () => void;
 }
 
-export function useColumnManager({ onColumnCreated }: UseColumnManagerProps) {
+export function useColumnManager({ onColumnCreated, onColumnDeleted }: UseColumnManagerProps) {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   // We'll use the base Column type for now to keep it simple.
   const [editingColumn, setEditingColumn] = useState<Column | null>(null);
@@ -36,6 +37,15 @@ export function useColumnManager({ onColumnCreated }: UseColumnManagerProps) {
     onColumnCreated();
   }, [closeDialog, onColumnCreated]);
 
+  const handleDeleteColumn = useCallback(async (columnId: string) => {
+    // TODO: Replace with actual Supabase call
+    console.log(`Pretending to delete column: ${columnId}`);
+    // Simulate a network request
+    await new Promise(resolve => setTimeout(resolve, 500));
+    console.log('Column deleted successfully.');
+    onColumnDeleted();
+  }, [onColumnDeleted]);
+
   return {
     isDialogOpen,
     editingColumn,
@@ -43,5 +53,6 @@ export function useColumnManager({ onColumnCreated }: UseColumnManagerProps) {
     openToEdit,
     closeDialog,
     handleCreationSuccess,
+    handleDeleteColumn,
   };
 }

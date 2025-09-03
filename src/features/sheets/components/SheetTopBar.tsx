@@ -12,10 +12,12 @@ import type { SaveStatus } from '../hooks/useSaveStatus';
 interface SheetTopBarProps {
   savingStatus: SaveStatus;
   selectedCellId?: string | null;
-  isRowSelected: boolean; 
+  isRowSelected: boolean;
+  isColumnSelected: boolean;
   onAddColumn: () => void;
   onDeleteRows: () => void;
   onOpenSettings: () => void;
+  onDeleteColumn: () => void;
 }
 
 /**
@@ -54,9 +56,11 @@ export function SheetTopBar({
   savingStatus,
   selectedCellId,
   isRowSelected,
+  isColumnSelected,
   onAddColumn,
   onDeleteRows,
   onOpenSettings,
+  onDeleteColumn,
 }: SheetTopBarProps) {
   const currentStatus = STATUS_CONFIG[savingStatus] || STATUS_CONFIG.idle;
 
@@ -81,9 +85,19 @@ export function SheetTopBar({
           variant="outline"
           size="icon"
           onClick={onOpenSettings}
+          disabled={!isColumnSelected}
           aria-label="View and edit column settings" // Accessibility: Label for screen readers
         >
           <Settings className="h-4 w-4" />
+        </Button>
+        <Button
+          variant="destructive"
+          size="icon"
+          onClick={onDeleteColumn}
+          disabled={!isColumnSelected}
+          aria-label="Delete selected column"
+        >
+          <Trash2 className="h-4 w-4" />
         </Button>
       </div>
 
