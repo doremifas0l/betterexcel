@@ -34,7 +34,7 @@ function SheetDetailInner({ sheetId: propSheetId, isFullscreen = false }: SheetD
 
   const { allTables, columns, rows, isLoading, error, refreshData, setRows } = useSheetData({ sheetId });
   const saveStatus = useSaveStatus();
-  const columnManager = useColumnManager({ onColumnCreated: refreshData, onColumnDeleted: refreshData });
+  const columnManager = useColumnManager({ onColumnCreated: refreshData });
   const rowDeletion = useRowDeletion({
     onDeletionSuccess: (deletedRowIds) => {
       setRows(currentRows => currentRows.filter(row => !deletedRowIds.includes(row.id)));
@@ -67,26 +67,6 @@ function SheetDetailInner({ sheetId: propSheetId, isFullscreen = false }: SheetD
     }
   };
 
-  const handleOpenColumnSettings = useCallback(() => {
-    if (!selection.selectedCell) {
-      return;
-    }
-    const selectedColumn = columns.find(c => c.id === selection.selectedCell!.columnId);
-    if (selectedColumn) {
-      columnManager.openToEdit(selectedColumn);
-    }
-  }, [selection.selectedCell, columns, columnManager]);
-
-  const handleDeleteColumn = useCallback(() => {
-    if (!selection.selectedCell) return;
-    const selectedColumn = columns.find(c => c.id === selection.selectedCell!.columnId);
-    if (selectedColumn) {
-      if (window.confirm(`Are you sure you want to delete the column "${selectedColumn.name}"? This cannot be undone.`)) {
-        columnManager.handleDeleteColumn(selectedColumn.id);
-      }
-    }
-  }, [selection.selectedCell, columns, columnManager]);
-
   if (isLoading) return <div>Loading Sheet...</div>;
   if (error) return <div>Error loading sheet: {error.message}</div>;
 
@@ -104,9 +84,7 @@ function SheetDetailInner({ sheetId: propSheetId, isFullscreen = false }: SheetD
           rowDeletion.startDeletion(selectedNodes);
         }}
         isRowSelected={selectedNodes.length > 0}
-        onOpenSettings={handleOpenColumnSettings}
-        isColumnSelected={!!selection.selectedCell}
-        onDeleteColumn={handleDeleteColumn}
+        onOpenSettings={() => alert('Column Settings clicked!')}
       />
       
       <div className="flex-1 p-4 bg-gray-50">

@@ -25,14 +25,14 @@ import { cn } from '@/lib/utils'
 
 interface ExcelToolbarProps {
   onAddColumn?: () => void
-  onSheetSettings?: () => void
+  onTableSettings?: () => void
   onSave?: () => void
   className?: string
 }
 
 export function ExcelToolbar({ 
   onAddColumn, 
-  onSheetSettings, 
+  onTableSettings,
   onSave,
   className 
 }: ExcelToolbarProps) {
@@ -121,8 +121,8 @@ export function ExcelToolbar({
             />
             <ToolbarButton 
               icon={Settings} 
-              tooltip="Sheet Settings" 
-              onClick={onSheetSettings}
+              tooltip="Table Settings"
+              onClick={onTableSettings}
             />
           </div>
         </div>

@@ -149,7 +149,7 @@ function ExcelTableDetailInner() {
   onCreateTable={() => navigate(`/project/${projectId}`)} 
 >
       <div className={cn("flex flex-col bg-white h-full", isFullscreen && "fixed inset-0 z-50")}>
-        <ExcelToolbar />
+        <ExcelToolbar onTableSettings={() => setShowTableSettings(true)} />
         <div className="flex-1 flex flex-col overflow-hidden">
           {sheets.length === 0 ? (
             <div className="flex-1 flex items-center justify-center bg-gray-50">
