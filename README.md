@@ -1,5 +1,112 @@
-understand my app.
+# Better Excel
 
+Better Excel is a powerful, full-stack web application that reimagines the spreadsheet experience. It combines a familiar, Excel-like interface with a robust backend, custom form building, advanced data automation, and AI-powered features.
+
+## ✨ Features
+
+*   **Project-Based Organization:** Group your data tables and forms into distinct projects.
+*   **Advanced Data Tables:** A feature-rich grid interface powered by AG-Grid, supporting various column types, real-time updates, and custom cell rendering.
+*   **Custom Form Builder:** Design and publish public-facing forms to collect data directly into your tables.
+*   **Automated Columns:** Configure columns that automatically derive their values from other data, including powerful rollup and linked record functionalities.
+*   **AI-Powered Assistance:** Leverage AI to process and analyze your data (requires a Gemini API key).
+*   **User Management:** Invite and manage team members with role-based permissions.
+*   **Data Integrity:** Features like data snapshots, audit trails, and dependency warnings help protect your data.
+
+## 🚀 Tech Stack
+
+| Category      | Technology                                                                                             |
+| ------------- | ------------------------------------------------------------------------------------------------------ |
+| **Frontend**  | [React](https://react.dev/), [Vite](https://vitejs.dev/), [TypeScript](https://www.typescriptlang.org/) |
+| **Styling**   | [Tailwind CSS](https://tailwindcss.com/), [Radix UI](https://www.radix-ui.com/)                          |
+| **Data Grid** | [AG-Grid](https://www.ag-grid.com/)                                                                    |
+| **Routing**   | [React Router](https://reactrouter.com/)                                                               |
+| **Forms**     | [React Hook Form](https://react-hook-form.com/), [Zod](https://zod.dev/)                                |
+| **Backend**   | [Supabase](https://supabase.com/) (PostgreSQL, Authentication, Edge Functions)                         |
+| **Testing**   | [Vitest](https://vitest.dev/)                                                                          |
+
+## ✅ Prerequisites
+
+Before you begin, ensure you have the following installed:
+
+*   [Node.js](https://nodejs.org/en) (LTS version recommended)
+*   [pnpm](https://pnpm.io/installation) (Package manager)
+*   [Supabase CLI](https://supabase.com/docs/guides/cli)
+
+## 🏁 Getting Started
+
+Follow these steps to get your local development environment up and running.
+
+### 1. Clone the Repository
+
+```bash
+git clone <repository-url>
+cd react_repo
+```
+
+### 2. Install Dependencies
+
+```bash
+pnpm install
+```
+
+### 3. Set Up Environment Variables
+
+Create a `.env` file by copying the example file.
+
+```bash
+cp .env.example .env
+```
+
+### 4. Start Supabase Local Development
+
+This command will start the Supabase services (database, auth, etc.) in Docker.
+
+```bash
+supabase start
+```
+
+Once it's running, the CLI will output your local Supabase URL, anon key, and other details.
+
+### 5. Update Environment Variables
+
+Open the `.env` file and fill in the following values from the `supabase start` output:
+
+*   `VITE_SUPABASE_URL`: The API URL for your local Supabase instance.
+*   `VITE_SUPABASE_ANON_KEY`: The `anon` public key.
+
+If you plan to use the AI features, you will also need to add your Google Gemini API key:
+
+*   `VITE_GEMINI_API_KEY`: Your key from Google AI Studio.
+
+### 6. Apply Database Migrations
+
+Run the following command to set up your local database schema.
+
+```bash
+supabase db reset
+```
+
+## 🏃 Running the Application
+
+To start the frontend development server, run:
+
+```bash
+pnpm dev
+```
+
+The application will be available at `http://localhost:5173` (or another port if 5173 is in use).
+
+## 🛠️ Scripts
+
+This project uses `pnpm` for script management. Here are the most common scripts:
+
+| Script        | Description                                    |
+| ------------- | ---------------------------------------------- |
+| `pnpm dev`    | Starts the Vite development server.            |
+| `pnpm build`  | Builds the application for production.         |
+| `pnpm lint`   | Lints the codebase using ESLint.               |
+| `pnpm test`   | Runs the test suite using Vitest.              |
+| `pnpm preview`| Serves the production build locally for review.|
 
 ---
 
