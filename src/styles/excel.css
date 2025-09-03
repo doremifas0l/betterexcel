@@ -1,0 +1,101 @@
+/* Excel-like Grid Styling */
+.excel-grid .ag-header-cell {
+  background: #f8f9fa !important;
+  border: 1px solid #dee2e6 !important;
+  border-bottom: 2px solid #495057 !important;
+  font-weight: bold;
+  color: #495057;
+}
+
+.excel-grid .ag-header-cell-resize::after {
+  background-color: #495057 !important;
+}
+
+.excel-grid .ag-cell {
+  border: 1px solid #e9ecef !important;
+  border-top: none !important;
+  border-left: none !important;
+}
+
+.excel-grid .ag-row:hover {
+  background-color: #f8f9fa !important;
+}
+
+.excel-grid .ag-cell-focus {
+  border: 2px solid #007bff !important;
+  outline: none !important;
+}
+
+.excel-grid .ag-cell-range-selected {
+  background-color: #cce5ff !important;
+  border-color: #007bff !important;
+}
+
+.excel-grid .excel-row-header {
+  background: #f8f9fa !important;
+  border: 1px solid #dee2e6 !important;
+  text-align: center;
+  font-weight: bold;
+  color: #495057;
+}
+
+.excel-grid .excel-column-header {
+  background: #f8f9fa !important;
+  border: 1px solid #dee2e6 !important;
+  border-bottom: 2px solid #495057 !important;
+  text-align: center;
+  padding: 4px !important;
+}
+
+.excel-grid .excel-header-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  line-height: 1.2;
+}
+
+.excel-grid .ag-header-cell-text {
+  text-align: center;
+}
+
+.excel-grid .ag-root-wrapper {
+  border: 2px solid #dee2e6;
+  border-radius: 4px;
+}
+
+/* Numeric cell styling */
+.excel-grid .ag-cell-numeric {
+  text-align: right !important;
+  font-family: 'Courier New', monospace;
+  font-feature-settings: 'tnum' 1;
+}
+
+/* Grid lines */
+.excel-grid .ag-row {
+  border-bottom: 1px solid #e9ecef !important;
+}
+
+.excel-grid .ag-header {
+  border-bottom: 2px solid #495057 !important;
+}
+
+/* Selection styling */
+.excel-grid .ag-row-selected {
+  background-color: #e3f2fd !important;
+}
+
+.excel-grid .ag-cell-inline-editing {
+  background-color: white !important;
+  border: 2px solid #007bff !important;
+}
+
+/* Scrollbar styling for better Excel feel */
+.excel-grid .ag-body-horizontal-scroll {
+  background-color: #f8f9fa;
+}
+
+.excel-grid .ag-body-vertical-scroll {
+  background-color: #f8f9fa;
+}

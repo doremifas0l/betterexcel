@@ -1,0 +1,492 @@
+/* Unified Excel-like Application Styling */
+/* Clean, consistent AG Grid theme implementation */
+
+/* Root Application Container */
+.excel-app {
+  --excel-border-color: #e5e7eb;
+  --excel-header-bg: #f9fafb;
+  --excel-header-border: #d1d5db;
+  --excel-cell-bg: #ffffff;
+  --excel-selected-bg: #dbeafe;
+  --excel-selected-border: #3b82f6;
+  --excel-hover-bg: #f8fafc;
+  --excel-text-color: #374151;
+  --excel-header-text: #1f2937;
+  --excel-toolbar-bg: #ffffff;
+  --excel-toolbar-border: #e5e7eb;
+  --excel-grid-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Segoe UI Symbol', 'Segoe UI Emoji', system-ui, sans-serif;
+  background-color: #f8fafc;
+}
+
+/* ===== FORMATTING TOOLBAR STYLING ===== */
+.excel-formatting-toolbar {
+  background: var(--excel-toolbar-bg);
+  border-bottom: 1px solid var(--excel-toolbar-border);
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  padding: 8px 16px;
+  min-height: 48px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.excel-toolbar-section {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding-right: 12px;
+  border-right: 1px solid var(--excel-border-color);
+}
+
+.excel-toolbar-section:last-child {
+  border-right: none;
+}
+
+.excel-toolbar-button {
+  height: 32px;
+  min-width: 32px;
+  padding: 0 8px;
+  border-radius: 4px;
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--excel-text-color);
+  font-size: 13px;
+  font-weight: 500;
+  transition: all 0.15s ease;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.excel-toolbar-button:hover {
+  background: var(--excel-hover-bg);
+  border-color: var(--excel-border-color);
+}
+
+.excel-toolbar-button.active {
+  background: var(--excel-selected-bg);
+  color: var(--excel-selected-border);
+  border-color: var(--excel-selected-border);
+}
+
+/* ===== GRID CONTAINER ===== */
+.excel-grid-container {
+  background: var(--excel-cell-bg);
+  border: 1px solid var(--excel-border-color);
+  border-radius: 8px;
+  box-shadow: var(--excel-grid-shadow);
+  overflow: hidden;
+  font-family: inherit;
+  height: 100%;
+  padding: 16px;
+}
+
+/* ===== AG GRID EXCEL THEME ===== */
+.ag-theme-excel {
+  --ag-foreground-color: var(--excel-text-color);
+  --ag-background-color: var(--excel-cell-bg);
+  --ag-header-foreground-color: var(--excel-header-text);
+  --ag-header-background-color: var(--excel-header-bg);
+  --ag-odd-row-background-color: var(--excel-cell-bg);
+  --ag-header-column-separator-color: var(--excel-header-border);
+  --ag-cell-horizontal-border: var(--excel-border-color);
+  --ag-border-color: var(--excel-border-color);
+  --ag-selected-row-background-color: var(--excel-selected-bg);
+  --ag-range-selection-background-color: var(--excel-selected-bg);
+  font-family: inherit;
+}
+
+/* AG Grid Root Container */
+.ag-theme-excel .ag-root-wrapper {
+  border: none;
+  border-radius: 8px;
+  box-shadow: none;
+  font-family: inherit;
+  background: var(--excel-cell-bg);
+}
+
+/* ===== HEADER STYLING ===== */
+.ag-theme-excel .ag-header {
+  background: var(--excel-header-bg);
+  border-bottom: 2px solid var(--excel-header-border);
+  font-family: inherit;
+}
+
+.ag-theme-excel .ag-header-cell {
+  background: var(--excel-header-bg) !important;
+  border-right: 1px solid var(--excel-header-border) !important;
+  border-bottom: none !important;
+  color: var(--excel-header-text);
+  font-weight: 600;
+  font-size: 13px;
+  font-family: inherit;
+  transition: background-color 0.15s ease;
+}
+
+.ag-theme-excel .ag-header-cell:hover {
+  background: #f3f4f6 !important;
+}
+
+.ag-theme-excel .ag-header-cell-text {
+  font-family: inherit;
+  font-weight: 600;
+}
+
+/* Column Resize Handle */
+.ag-theme-excel .ag-header-cell-resize::after {
+  background-color: var(--excel-selected-border) !important;
+  width: 2px;
+}
+
+.ag-theme-excel .ag-header-cell-resize:hover::after {
+  background-color: #1d4ed8 !important;
+}
+
+/* ===== ROW AND CELL STYLING ===== */
+.ag-theme-excel .ag-row {
+  border: none !important;
+  font-family: inherit;
+}
+
+.ag-theme-excel .ag-cell {
+  border-right: 1px solid var(--excel-border-color) !important;
+  border-bottom: 1px solid var(--excel-border-color) !important;
+  border-top: none !important;
+  border-left: none !important;
+  background: var(--excel-cell-bg);
+  padding: 8px 12px;
+  font-size: 13px;
+  color: var(--excel-text-color);
+  line-height: 1.4;
+  font-family: inherit;
+  transition: background-color 0.1s ease;
+}
+
+.ag-theme-excel .ag-row:hover .ag-cell {
+  background: var(--excel-hover-bg) !important;
+}
+
+/* ===== ROW HEADER (Row Number Column) ===== */
+.ag-theme-excel .excel-row-header {
+  background: var(--excel-header-bg) !important;
+  border-right: 1px solid var(--excel-header-border) !important;
+  border-bottom: 1px solid var(--excel-border-color) !important;
+  text-align: center;
+  font-weight: 600;
+  color: var(--excel-header-text);
+  font-size: 12px;
+  font-family: inherit;
+  user-select: none;
+  transition: background-color 0.15s ease;
+}
+
+.ag-theme-excel .excel-row-header:hover {
+  background: #f3f4f6 !important;
+}
+
+/* ===== COLUMN HEADER STYLING ===== */
+.ag-theme-excel .excel-column-header {
+  background: var(--excel-header-bg) !important;
+  text-align: center;
+  padding: 8px 4px !important;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--excel-header-text);
+  font-family: inherit;
+  user-select: none;
+}
+
+.ag-theme-excel .excel-header-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  line-height: 1.2;
+  gap: 2px;
+  font-family: inherit;
+}
+
+.ag-theme-excel .excel-header-letter {
+  font-size: 11px;
+  font-weight: 700;
+  color: #6b7280;
+  letter-spacing: 0.5px;
+  font-family: inherit;
+}
+
+.ag-theme-excel .excel-header-name {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--excel-header-text);
+  max-width: 100px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-family: inherit;
+}
+
+/* ===== SELECTION AND FOCUS STYLING ===== */
+.ag-theme-excel .ag-cell-focus {
+  border: 2px solid var(--excel-selected-border) !important;
+  background: var(--excel-cell-bg) !important;
+  outline: none !important;
+  z-index: 1;
+}
+
+.ag-theme-excel .ag-cell-range-selected {
+  background: var(--excel-selected-bg) !important;
+  border-color: var(--excel-selected-border) !important;
+}
+
+.ag-theme-excel .ag-row-selected .ag-cell {
+  background: #eff6ff !important;
+}
+
+/* ===== EDITING STATES ===== */
+.ag-theme-excel .ag-cell-inline-editing {
+  background: white !important;
+  border: 2px solid var(--excel-selected-border) !important;
+  box-shadow: 0 0 0 1px rgba(59, 130, 246, 0.1);
+  z-index: 2;
+}
+
+.ag-theme-excel .ag-cell-inline-editing input {
+  font-size: 13px;
+  padding: 4px 8px;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-family: inherit;
+}
+
+/* ===== NUMERIC CELL STYLING ===== */
+.ag-theme-excel .excel-cell-numeric {
+  text-align: right !important;
+  font-family: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace;
+  font-feature-settings: 'tnum' 1;
+  font-size: 12px;
+}
+
+/* ===== CHECKBOX STYLING ===== */
+.ag-theme-excel .ag-checkbox-input-wrapper {
+  width: 18px;
+  height: 18px;
+}
+
+.ag-theme-excel .ag-checkbox-input {
+  width: 16px;
+  height: 16px;
+  border-radius: 3px;
+  border: 1.5px solid var(--excel-border-color);
+}
+
+.ag-theme-excel .ag-checkbox-checked .ag-checkbox-input {
+  background-color: var(--excel-selected-border);
+  border-color: var(--excel-selected-border);
+}
+
+/* ===== SCROLLBAR STYLING ===== */
+.ag-theme-excel .ag-body-horizontal-scroll {
+  background-color: var(--excel-header-bg);
+  border-top: 1px solid var(--excel-border-color);
+}
+
+.ag-theme-excel .ag-body-vertical-scroll {
+  background-color: var(--excel-header-bg);
+  border-left: 1px solid var(--excel-border-color);
+}
+
+.ag-theme-excel .ag-body-horizontal-scroll-viewport,
+.ag-theme-excel .ag-body-vertical-scroll-viewport {
+  border-radius: 4px;
+}
+
+/* ===== LOADING OVERLAY ===== */
+.ag-theme-excel .ag-overlay-loading-wrapper {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(2px);
+}
+
+/* ===== CONTEXT MENU ===== */
+.ag-theme-excel .ag-menu {
+  border-radius: 8px;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  border: 1px solid var(--excel-border-color);
+  font-family: inherit;
+}
+
+/* ===== PINNED COLUMNS ===== */
+.ag-theme-excel .ag-pinned-left-cols-container {
+  border-right: 2px solid var(--excel-header-border);
+  background: var(--excel-header-bg);
+}
+
+/* ===== ERROR STATES ===== */
+.ag-theme-excel .excel-cell-error {
+  background: #fef2f2 !important;
+  border-color: #f87171 !important;
+  color: #dc2626;
+}
+
+.ag-theme-excel .excel-cell-required-empty {
+  background: #fef2f2 !important;
+  border: 2px solid #ef4444 !important;
+}
+
+/* ===== SHEET TABS ===== */
+.excel-sheet-tabs {
+  background: linear-gradient(to bottom, var(--excel-header-bg) 0%, #f3f4f6 100%);
+  border-top: 1px solid var(--excel-border-color);
+  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.5);
+  font-family: inherit;
+}
+
+.excel-sheet-tab {
+  position: relative;
+  background: linear-gradient(to bottom, #e5e7eb 0%, #d1d5db 100%);
+  border: 1px solid #d1d5db;
+  border-bottom: none;
+  border-radius: 6px 6px 0 0;
+  color: #6b7280;
+  font-weight: 500;
+  font-size: 13px;
+  font-family: inherit;
+  transition: all 0.15s ease;
+  min-width: 80px;
+  max-width: 180px;
+}
+
+.excel-sheet-tab:hover {
+  background: linear-gradient(to bottom, #f3f4f6 0%, #e5e7eb 100%);
+  color: var(--excel-text-color);
+  transform: translateY(-1px);
+}
+
+.excel-sheet-tab.active {
+  background: linear-gradient(to bottom, var(--excel-cell-bg) 0%, var(--excel-header-bg) 100%);
+  border-color: var(--excel-border-color);
+  color: var(--excel-text-color);
+  font-weight: 600;
+  z-index: 1;
+  box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.excel-sheet-tab.active::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--excel-selected-border);
+  border-radius: 2px 2px 0 0;
+}
+
+/* ===== FULLSCREEN STYLES ===== */
+.excel-fullscreen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 50;
+  background: var(--excel-cell-bg);
+}
+
+.excel-fullscreen-content {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-family: inherit;
+}
+
+.excel-fullscreen .excel-grid-container {
+  height: 100%;
+}
+
+/* ===== RESPONSIVE IMPROVEMENTS ===== */
+@media (max-width: 768px) {
+  .ag-theme-excel .ag-header-cell {
+    font-size: 12px;
+    padding: 4px 8px;
+  }
+  
+  .ag-theme-excel .ag-cell {
+    font-size: 12px;
+    padding: 6px 8px;
+  }
+  
+  .excel-sheet-tab {
+    min-width: 60px;
+    max-width: 120px;
+    font-size: 12px;
+  }
+  
+  .excel-formatting-toolbar {
+    padding: 4px 8px;
+    min-height: 40px;
+  }
+  
+  .excel-toolbar-button {
+    height: 28px;
+    min-width: 28px;
+    font-size: 12px;
+  }
+}
+
+/* ===== ANIMATION ENHANCEMENTS ===== */
+@keyframes excel-cell-flash {
+  0% { background-color: #fef3c7; }
+  100% { background-color: var(--excel-cell-bg); }
+}
+
+.ag-theme-excel .ag-cell.excel-flash {
+  animation: excel-cell-flash 0.5s ease-out;
+}
+
+/* ===== FOCUS STATES ===== */
+.excel-app *:focus {
+  outline: 2px solid var(--excel-selected-border);
+  outline-offset: -2px;
+}
+
+.ag-theme-excel .ag-cell:focus {
+  outline: none;
+}
+
+/* ===== ENSURE PERFECT GRIDLINES ===== */
+/* Force all horizontal gridlines to appear consistently */
+.ag-theme-excel .ag-row .ag-cell {
+  border-bottom: 1px solid var(--excel-border-color) !important;
+}
+
+/* Force all vertical gridlines to appear consistently */
+.ag-theme-excel .ag-cell {
+  border-right: 1px solid var(--excel-border-color) !important;
+}
+
+/* Ensure header borders are consistent */
+.ag-theme-excel .ag-header-cell {
+  border-right: 1px solid var(--excel-header-border) !important;
+}
+
+/* ===== DARK MODE SUPPORT ===== */
+@media (prefers-color-scheme: dark) {
+  .excel-app {
+    --excel-border-color: #374151;
+    --excel-header-bg: #1f2937;
+    --excel-header-border: #4b5563;
+    --excel-cell-bg: #111827;
+    --excel-selected-bg: #1e40af;
+    --excel-selected-border: #3b82f6;
+    --excel-hover-bg: #1f2937;
+    --excel-text-color: #f9fafb;
+    --excel-header-text: #f3f4f6;
+    --excel-toolbar-bg: #1f2937;
+    --excel-toolbar-border: #374151;
+    background-color: #0f172a;
+  }
+}

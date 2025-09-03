@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Form Creation Test</title>
+    <script>
+        console.log("Testing form creation workflow");
+        
+        // Simulate the state management logic from FormCreator
+        let showProjectTableDialog = false;
+        let showColumnPicker = false;
+        let dialogOpenCount = 0;
+        
+        function addQuestionClick() {
+            console.log("Add Question clicked");
+            showProjectTableDialog = true;
+            dialogOpenCount++;
+            console.log("showProjectTableDialog:", showProjectTableDialog);
+            console.log("Dialog open count:", dialogOpenCount);
+            
+            if (dialogOpenCount > 10) {
+                console.error("INFINITE LOOP DETECTED! Dialog opened", dialogOpenCount, "times");
+                return false;
+            }
+            return true;
+        }
+        
+        function selectExistingColumnClick() {
+            console.log("Select Existing Column clicked");
+            showColumnPicker = true;
+            console.log("showColumnPicker:", showColumnPicker);
+        }
+        
+        function columnSelected() {
+            console.log("Column selected");
+            showColumnPicker = false;
+            console.log("showColumnPicker:", showColumnPicker);
+            // Main dialog should still be open
+            console.log("showProjectTableDialog should still be true:", showProjectTableDialog);
+        }
+        
+        function cancelDialog() {
+            console.log("Dialog cancelled");
+            showProjectTableDialog = false;
+            showColumnPicker = false;
+            console.log("All dialogs closed");
+        }
+        
+        function testWorkflow() {
+            console.log("\n=== Testing Form Creation Workflow ===");
+            
+            // Test 1: Normal flow
+            console.log("\n1. Testing normal flow:");
+            addQuestionClick();
+            selectExistingColumnClick();
+            columnSelected();
+            cancelDialog();
+            
+            // Test 2: Multiple add question clicks
+            console.log("\n2. Testing multiple add question clicks:");
+            for (let i = 0; i < 5; i++) {
+                console.log("Iteration", i + 1);
+                if (!addQuestionClick()) {
+                    break;
+                }
+            }
+            
+            console.log("\n=== Test Complete ===");
+        }
+        
+        // Run test when page loads
+        window.onload = testWorkflow;
+    </script>
+</head>
+<body>
+    <h1>Form Creation Logic Test</h1>
+    <p>Check the browser console for test results</p>
+</body>
+</html>
